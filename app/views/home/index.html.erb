@@ -1,2 +1,13 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<% @jobs.each do |firm, jobs| %>
+
+<h2 style ="color: #5994E0">
+	<b><%= firm.gsub("https://www.welcometothejungle.co/companies/","").gsub("/jobs","").capitalize %> :</b></h2>
+	<br>
+
+		<% jobs.each do |key| %>
+			<li><%= key %></li>
+		<% end %> <br><br>
+<% end %>

@@ -1,2 +1,37 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+Voici les nouveaux jobs par rapport au dernier scrapping : <br> <br>
+
+<% if @exc1.count > 0 %>
+
+	<% n=0 %>
+	<% @exc1.each do |key| %>
+
+		<h2 style ="color: #5994E0"> Chez <%= key[0].gsub("https://www.welcometothejungle.co/companies/","").gsub("/jobs","").capitalize %> : </h2>
+
+		<!-- key[1] est un array de NOUVEAUX jobs qui a été modifié. Boucler dessus ressort chaque job de l'array -->
+		<!-- L'objectif est de comparer ce key[1] avec l'ancien key[1] (issu de ex_hash) afin de sortir la valeur étrangère -->
+
+		<% @new_jobs = key[1] %> <br>
+
+			<% key[1].each do |job| %>
+				<li> <%= job %> </li> 
+			<% end %>
+
+		<% begin %>
+			<% @ex_jobs = @exc2[n][1] %>
+		<% rescue %>
+		<% end %>
+
+<!-- On veut comparer @ex_jobs et @new_jobs pour sortir les différences : -->
+			<% @only_new_elements = @new_jobs.difference(@ex_jobs) %>
+
+<br><h4><b>	Voici les nouveaux jobs depuis le dernier scraping :</b></h4>
+			<% @only_new_elements.each do |job| %>
+				<li> <%= job %> </li>
+			<% end %>
+ 	<% n= n+1 %>
+	<% end %> <br>
+
+<% else %>
+	Pas de nouveau job au sein du réseau.
+<% end %>
+
