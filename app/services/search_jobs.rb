@@ -6,7 +6,7 @@ class SearchJobs
 	attr_accessor :downcased_name, :usable_names
 
 	def initialize(firms)
-		@firms = ["Doctrine","Dataiku","Doctolib","Contentsquare","Back-Market","Qonto","Cheerz","Dashlane","Ledger","Shift-Technology","meilleursagents.com","Blablacar","Cubyn","Hostnfly","Openclassrooms","Cardiologs","Hellozack","BAM","Startupflow","Privateaser","Destygo","Bankin","Slite","Side","Unow","Payfit","Ovrsea","Comet","Pricemoov","Captain-contrat","Diduenjoy","Benify","Seelk","Selency","Brand-and-celebrities","Lifen","Arcane","MargoBank","Drivy"]
+		@firms = ["Doctrine","Dataiku","Doctolib","Drivy"]
 		@usable_names = []
 		@urls_array =[]
 		@jobs_array = []
@@ -34,7 +34,6 @@ class SearchJobs
 				@my_hash[key].push k.text
 			end
 		end
-		puts @my_hash
 		CSV.open("data.csv", "wb") {|csv| @my_hash.to_a.each {|elem| csv << elem} }
 	end
 end

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> Nouveau(x) job(s) dans le réseau !</h1>
+    <p>
+<% n=0 %>
+  <% @exc1.each do |key| %>
+
+    <h2 style ="color: #5994E0"> 
+      Chez <%= key[0].gsub("https://www.welcometothejungle.co/companies/","").gsub("/jobs","").capitalize %> : 
+    </h2><br>
+
+    <% @new_jobs = key[1] %>
+
+    <% begin %>
+      <% @ex_jobs = @exc2[n][1] %>
+    <% rescue %>
+    <% end %>
+
+      <% @only_here = @new_jobs.difference(@ex_jobs) %>
+      <% @only_here.each do |job| %>
+        <li> <%= job %> </li>
+      <% end %>
+<br><br><br>
+
+<% n= n+1 %>
+<% end %> 
+
+    </p>
+  </body>
+</html>
