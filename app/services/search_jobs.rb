@@ -11,8 +11,8 @@ class SearchJobs
 		@urls_array =[]
 		@jobs_array = []
 		@my_hash = Hash.new{|hsh,key| hsh[key] = [] }
-		Selenium::WebDriver::Chrome.path = "path/to/google-chrome"
-		Selenium::WebDriver::Chrome.driver_path = "path/to/chromedriver"
+		Selenium::WebDriver::Chrome.path = "/app/.apt/usr/bin/google-chrome"
+		Selenium::WebDriver::Chrome.driver_path = "/usr/local/bin/chromedriver"
 		@browser = Watir::Browser.new(:chrome, {:chromeOptions => {:args => ['--headless', '--window-size=1200x600']}})
 		@firms.map do |key|
 			downcased_name = key.downcase
